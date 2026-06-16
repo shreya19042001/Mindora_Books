@@ -218,8 +218,8 @@ function getBookStyle(role) {
     opacity: '1',
     zIndex: '20',
     left: '50%',
-    height: mob ? `${vh * 0.55}px` : `${vh * 0.75}px`,
-    bottom: mob ? '8%' : '8%',
+    height: mob ? `${window.innerHeight * 0.42}px` : `${window.innerHeight * 0.75}px`,
+  bottom: mob ? '2%' : '8%',
   };
   if (role === 'left') return {
     transform: `translateX(-50%) scale(1)`,
