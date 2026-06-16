@@ -487,19 +487,19 @@ section{padding:3rem 2rem;position:relative;}
 #for-whom::before{
   background: linear-gradient(180deg, rgba(196,181,253,0.14) 0%, rgba(167,139,250,0.20) 100%);
 }
-#products::before{
+#products::before {
   background:
-    linear-gradient(180deg, rgba(255,107,107,0.16) 0%, rgba(245,200,66,0.20) 100%),
+    linear-gradient(180deg, rgba(80,30,10,0.35) 0%, rgba(40,15,5,0.55) 100%),
     url('images/gallery-1.jpeg') center/cover;
-  background-blend-mode: overlay;
-  opacity:0.9;
+  background-blend-mode: multiply;
+  opacity: 1;
 }
 #coming-soon::before{
   background:
-    linear-gradient(180deg, rgba(167,139,250,0.16) 0%, rgba(56,189,248,0.20) 100%),
+    linear-gradient(180deg, rgba(80,30,10,0.35) 0%, rgba(40,15,5,0.55) 100%),
     url('images/gallery-9.png') center/cover;
-  background-blend-mode: overlay;
-  opacity:0.9;
+  background-blend-mode: multiply;
+  opacity: 1; 
 }
 #reviews::before{
   background: linear-gradient(180deg, rgba(167,139,250,0.15) 0%, rgba(255,107,107,0.18) 100%);
@@ -787,7 +787,7 @@ footer{
 ════════════════════════════════════════════ */
 #showcaseSection{
   position:relative; width:100%;
-  height:80vh; min-height:560px;
+  min-height: max(100vh, 700px);
   overflow:hidden;
   display:flex; flex-direction:column; align-items:stretch; justify-content:flex-end;
   transition: background-color 700ms cubic-bezier(0.4,0,0.2,1);
@@ -841,19 +841,15 @@ footer{
 }
 .c-book-item{
   position:absolute;
-  width: 38vh;              /* explicit width driven by viewport height */
-  max-width: 320px;
-  aspect-ratio: 8.5 / 11;
   z-index:10;
 }
 @media(max-width:640px){
-  .c-book-item{ width: 50vw; max-width: 280px; }
 }
-.c-book-3d-wrap{ position:relative; width:100%; height:100%; transform-style:preserve-3d; }
+.c-book-3d-wrap{ position:relative; width:auto; height:100%; transform-style:preserve-3d; }
 .c-book-3d-wrap img{
-  width:100%; height:100%; object-fit:contain; object-position:center; display:block;
+  width:auto; height:100%; object-fit:contain; object-position:center; display:block;
   border-radius:5px 18px 18px 5px;
-  box-shadow: -8px 12px 48px rgba(0,0,0,0.65), 4px 4px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.06);
+  box-shadow: -8px 12px 48px rgba(0,0,0,0.65), 4px 4px 20px rgba(0,0,0,0.4);
 }
 .c-book-spine{
   position:absolute; left:-26px; top:0; width:26px; height:100%;

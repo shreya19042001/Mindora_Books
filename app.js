@@ -208,37 +208,38 @@ const SVG_ICONS = {
 
 function isMobile(){ return window.innerWidth < 640; }
 
-function getBookStyle(role){
+function getBookStyle(role) {
   const mob = isMobile();
-  if(role === 'center') return {
-    transform:`translateX(-50%) scale(${mob ? 1.0 : 1.15})`,
-    filter:'none',
-    opacity:'1',
-    zIndex:'20',
-    left:'50%',
-    height: mob ? '52%' : '70%', /* FIX: bigger, wider book */
-    bottom: mob ? '18%' : '6%',
+  const vh = window.innerHeight;
+
+  if (role === 'center') return {
+    transform: `translateX(-50%) scale(1)`,
+    filter: 'none',
+    opacity: '1',
+    zIndex: '20',
+    left: '50%',
+    height: mob ? `${vh * 0.55}px` : `${vh * 0.75}px`,
+    bottom: mob ? '8%' : '8%',
   };
-  if(role === 'left') return {
-    transform:`translateX(-50%) scale(1)`,
-    filter:'blur(3px) brightness(0.55)',
-    opacity:'0.8',
-    zIndex:'10',
+  if (role === 'left') return {
+    transform: `translateX(-50%) scale(1)`,
+    filter: 'blur(3px) brightness(0.55)',
+    opacity: '0.8',
+    zIndex: '10',
     left: mob ? '16%' : '25%',
-    height: mob ? '24%' : '32%',
+    height: mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
     bottom: mob ? '24%' : '12%',
   };
-  if(role === 'right') return {
-    transform:`translateX(-50%) scale(1)`,
-    filter:'blur(3px) brightness(0.55)',
-    opacity:'0.8',
-    zIndex:'10',
+  if (role === 'right') return {
+    transform: `translateX(-50%) scale(1)`,
+    filter: 'blur(3px) brightness(0.55)',
+    opacity: '0.8',
+    zIndex: '10',
     left: mob ? '84%' : '75%',
-    height: mob ? '24%' : '32%',
+    height: mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
     bottom: mob ? '24%' : '12%',
   };
-  // hidden
-  return { opacity:'0', zIndex:'0', left:'50%', height:'0', transform:'translateX(-50%)' };
+  return { opacity: '0', zIndex: '0', left: '50%', height: '0', transform: 'translateX(-50%)' };
 }
 
 function applyBookStyles(){
