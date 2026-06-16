@@ -218,8 +218,8 @@ function getBookStyle(role) {
     opacity: '1',
     zIndex: '20',
     left: '50%',
-    height: mob ? `${window.innerHeight * 0.42}px` : `${window.innerHeight * 0.75}px`,
-  bottom: mob ? '2%' : '8%',
+    '--book-h': mob ? `${vh * 0.40}px` : `${vh * 0.60}px`,
+    bottom: mob ? '2%' : '8%',
   };
   if (role === 'left') return {
     transform: `translateX(-50%) scale(1)`,
@@ -227,7 +227,7 @@ function getBookStyle(role) {
     opacity: '0.8',
     zIndex: '10',
     left: mob ? '16%' : '25%',
-    height: mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
+    '--book-h': mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
     bottom: mob ? '24%' : '12%',
   };
   if (role === 'right') return {
@@ -236,10 +236,10 @@ function getBookStyle(role) {
     opacity: '0.8',
     zIndex: '10',
     left: mob ? '84%' : '75%',
-    height: mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
+    '--book-h': mob ? `${vh * 0.26}px` : `${vh * 0.32}px`,
     bottom: mob ? '24%' : '12%',
   };
-  return { opacity: '0', zIndex: '0', left: '50%', height: '0', transform: 'translateX(-50%)' };
+  return { opacity: '0', zIndex: '0', left: '50%', '--book-h': '0px', transform: 'translateX(-50%)' };
 }
 
 function applyBookStyles(){
@@ -256,7 +256,10 @@ function applyBookStyles(){
     if(!el) return;
     const role  = roles[i] || 'hidden';
     const style = getBookStyle(role);
-    Object.assign(el.style, style);
+    Object.entries(style).forEach(([k, v]) => {
+      if(k.startsWith('--')){ el.style.setProperty(k, v); }
+      else { el.style[k] = v; }
+    });
   });
 }
 
